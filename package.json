@@ -2,7 +2,7 @@
   "name": "react-hw-05-movies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://andrewsor13.github.io/react-hw-05-movies/",
+  "homepage": "https://andrewsor13.github.io/MoviesProject/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
