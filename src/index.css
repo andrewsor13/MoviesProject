@@ -17,3 +17,16 @@ code {
 a {
   text-decoration: none;
 }
+ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0px;
+  padding: 0px;
+}

@@ -11,15 +11,3 @@
   align-items: center;
   gap: 15px;
 }
-
-/* a:-webkit-any-link:active {
-  color: yellow;
-} */
-
-.link {
-  color: blue;
-}
-
-.linkActive {
-  color: yellow;
-}

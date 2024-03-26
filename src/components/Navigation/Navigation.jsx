@@ -11,18 +11,12 @@ export default function Navigation() {
         </p>
       </Link>
       <div className={styles.navigationRight}>
-        <NavLink
-          exact
-          to="/react-hw-05-movies"
-          activeClassName={styles.linkActive}
-          className={styles.link}
-        >
+        <NavLink exact="true" to="/react-hw-05-movies" className={styles.link}>
           Home
         </NavLink>
         <NavLink
-          exact
+          exact="true"
           to="/react-hw-05-movies/movies"
-          activeClassName={styles.linkActive}
           className={styles.link}
         >
           Search
