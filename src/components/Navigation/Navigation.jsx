@@ -5,18 +5,18 @@ import { NavLink, Link } from 'react-router-dom';
 export default function Navigation() {
   return (
     <nav className={styles.navigation}>
-      <Link to="/react-hw-05-movies">
+      <Link to="/MoviesProject">
         <p>
           Movies<span>Page</span>
         </p>
       </Link>
       <div className={styles.navigationRight}>
-        <NavLink exact="true" to="/react-hw-05-movies" className={styles.link}>
+        <NavLink exact="true" to="/MoviesProject" className={styles.link}>
           Home
         </NavLink>
         <NavLink
           exact="true"
-          to="/react-hw-05-movies/movies"
+          to="/MoviesProject/movies"
           className={styles.link}
         >
           Search

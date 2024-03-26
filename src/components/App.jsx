@@ -16,7 +16,7 @@ export const App = () => {
           <Routes>
             <Route
               index
-              path="/react-hw-05-movies"
+              path="/MoviesProject"
               element={
                 <Container>
                   <HomePage />
@@ -24,7 +24,7 @@ export const App = () => {
               }
             ></Route>
             <Route
-              path="/react-hw-05-movies/movies"
+              path="/MoviesProject/movies"
               element={
                 <Container>
                   <MoviesPage />
