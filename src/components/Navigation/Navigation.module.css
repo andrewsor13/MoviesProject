@@ -1,0 +1,25 @@
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.navigationRight {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* a:-webkit-any-link:active {
+  color: yellow;
+} */
+
+.link {
+  color: blue;
+}
+
+.linkActive {
+  color: yellow;
+}
