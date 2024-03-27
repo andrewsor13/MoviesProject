@@ -12,9 +12,7 @@ export const App = () => {
     <TrendingMoviesProvider>
       <div>
         <BrowserRouter>
-          <Container>
-            <Navigation />
-          </Container>
+          <Navigation />
           <Routes>
             <Route
               index
