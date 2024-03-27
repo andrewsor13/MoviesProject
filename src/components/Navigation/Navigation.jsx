@@ -1,25 +1,26 @@
 import React from 'react';
 import styles from './Navigation.module.css';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function Navigation() {
   return (
     <nav className={styles.navigation}>
-      <Link to="/MoviesProject">
+      <NavLink exact="true" to="/MoviesProject" className={styles.link}>
         <p>
-          Movies<span>Page</span>
+          <span className={styles.titleFirst}>Movies</span>
+          <span className={styles.titleSecond}>Page</span>
         </p>
-      </Link>
+      </NavLink>
       <div className={styles.navigationRight}>
         <NavLink exact="true" to="/MoviesProject" className={styles.link}>
-          Home
+          <p className={styles.linkOption}>Home</p>
         </NavLink>
         <NavLink
           exact="true"
-          to="/MoviesProject/movies"
+          to="/MoviesProject/Search"
           className={styles.link}
         >
-          Search
+          <p className={styles.linkOption}>Search</p>
         </NavLink>
       </div>
     </nav>

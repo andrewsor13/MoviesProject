@@ -1,13 +1,35 @@
+@import '../../Assets/variables.css';
+
 .navigation {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
   border-bottom: 1px solid black;
+  padding: 15px 10px;
 }
 
 .navigationRight {
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.titleFirst {
+  color: var(--main-color);
+}
+
+.titleSecond {
+  color: var(--secondary-color);
+}
+
+.titleFirst,
+.titleSecond {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.linkOption {
+  color: var(--text-color);
+  font-size: 18px;
 }

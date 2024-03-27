@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import HomePage from './HomePage/HomePage';
-import MoviesPage from './MoviesPage/MoviesPage';
+import SearchPage from './SearchPage/SearchPage';
 import Container from './Container/Container';
 import Navigation from './Navigation/Navigation';
 import { TrendingMoviesProvider } from '../Store/TrendingDataContext';
@@ -12,7 +12,9 @@ export const App = () => {
     <TrendingMoviesProvider>
       <div>
         <BrowserRouter>
-          <Navigation />
+          <Container>
+            <Navigation />
+          </Container>
           <Routes>
             <Route
               index
@@ -24,10 +26,10 @@ export const App = () => {
               }
             ></Route>
             <Route
-              path="/MoviesProject/movies"
+              path="/MoviesProject/search"
               element={
                 <Container>
-                  <MoviesPage />
+                  <SearchPage />
                 </Container>
               }
             ></Route>
