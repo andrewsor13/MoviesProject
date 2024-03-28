@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import styles from './Card.module.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Card({
   poster_path,
@@ -11,7 +11,6 @@ export default function Card({
   movie_id,
 }) {
   const navigate = useNavigate();
-  const { params } = useParams();
 
   const handleClick = () => {
     navigate(`/${movie_id}`);
