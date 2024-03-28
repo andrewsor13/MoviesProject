@@ -1,16 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useHandleSearch from '../../Hooks/useHandleSearch';
 import Container from 'components/Container/Container';
 import styles from './MovieDetails.module.css';
 import { FaStar } from 'react-icons/fa';
-// import Reviews from 'components/Reviews/Reviews';
-// import Credits from 'components/Credits/Credits';
 import LoadingSpinner from 'components/LoadingSpinner/LoadingSpinner';
+import Reviews from 'components/Reviews/Reviews';
+import Credits from 'components/Credits/Credits';
 
 export default function MovieDetails() {
+  const [revClick, setRevClick] = useState(true);
+
+  const handleRevClick = () => {
+    setRevClick(true);
+  };
+
+  const handleCastClick = () => {
+    setRevClick(false);
+  };
+
   const { movieId } = useParams();
-  const { fetchData, setItem, data, isLoading } = useHandleSearch();
+  const { fetchData, setItem, data, isLoading, credits, reviews } =
+    useHandleSearch();
 
   useEffect(() => {
     setItem(movieId);
@@ -43,7 +54,10 @@ export default function MovieDetails() {
                           <p>{data.release_date}</p>
                           <ul className={styles.detailsGenres}>
                             {data.genres.map((genre, index) => (
-                              <li key={index}>
+                              <li
+                                key={index}
+                                className={styles.detailsGenresGenre}
+                              >
                                 <strong>
                                   {genre.name}
                                   {index < data.genres.length - 1 ? ',' : null}
@@ -87,24 +101,32 @@ export default function MovieDetails() {
                 </div>
               </div>
             )}
+            <div className={styles.extras}>
+              <button
+                className={`${styles.extrasButton} ${
+                  revClick ? styles.extrasButtonActive : ''
+                }`}
+                onClick={handleRevClick}
+              >
+                Reviews
+              </button>
+              <button
+                className={`${styles.extrasButton} ${
+                  !revClick ? styles.extrasButtonActive : ''
+                }`}
+                onClick={handleCastClick}
+              >
+                Cast
+              </button>
+            </div>
             <div className={styles.dataBlock}>
-              <div className={styles.dataBlock_castRev}></div>
-              {/* <div className={styles.sideInfo}>
-              <ul className={styles.extraInfo}>
-                <li className={styles.extraInfo_item}>
-                  <p className={styles.extraInfo_item_text}>Status:</p>
-                  <p>{data?.status}</p>
-                </li>
-                <li>
-                  <p className={styles.extraInfo_item_text}>Budget:</p>
-                  <p>${data?.budget.toLocaleString()}</p>
-                </li>
-                <li>
-                  <p className={styles.extraInfo_item_text}>Revenue:</p>
-                  <p>${data?.revenue.toLocaleString()}</p>
-                </li>
-              </ul>
-            </div> */}
+              <div className={styles.dataBlock_castRev}>
+                {revClick ? (
+                  <Reviews reviews={reviews} />
+                ) : (
+                  <Credits credits={credits} />
+                )}
+              </div>
             </div>
           </div>
         </Container>

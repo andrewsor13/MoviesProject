@@ -1,0 +1,60 @@
+.list {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  gap: 20px;
+  padding: 20px;
+  scrollbar-width: thin;
+  overflow-y: hidden;
+  max-height: 80vh;
+}
+
+.listItem {
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  overflow: hidden;
+  flex: 70;
+}
+.image {
+  width: 150px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.avatar {
+  display: flex;
+  overflow: hidden;
+  flex: 70;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+}
+
+.reviewer {
+  flex: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.reviewerName {
+  font-size: 13px;
+}
+.reviewerCharacter {
+  font-size: 12px;
+}
+
+.list::-webkit-scrollbar {
+  width: 12px; /* Lățimea barei de derulare orizontală */
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: #888; /* Culoarea fundalului barei de derulare orizontală */
+  border-radius: 20px; /* Bara de derulare ovală pe axa x */
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import styles from './Card.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function Card({
   poster_path,
@@ -11,6 +11,7 @@ export default function Card({
   movie_id,
 }) {
   const navigate = useNavigate();
+  const { params } = useParams();
 
   const handleClick = () => {
     navigate(`/${movie_id}`);
@@ -18,13 +19,11 @@ export default function Card({
   return (
     <div className={styles.coverContainer} onClick={handleClick}>
       <div className={styles.imageContainer}>
-        <div>
-          <img
-            src={`https://image.tmdb.org/t/p/w500` + poster_path}
-            alt={title}
-            className={styles.image}
-          />
-        </div>
+        <img
+          src={`https://image.tmdb.org/t/p/w500` + poster_path}
+          alt={title}
+          className={styles.image}
+        />
       </div>
       <div className={styles.description}>
         <h2 className={styles.title}>{title}</h2>

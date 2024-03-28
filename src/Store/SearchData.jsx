@@ -26,6 +26,7 @@ export const SearchFormProvider = ({ children }) => {
           setIsLoading(true);
           const response = await axios.get(url, options);
           setSearchData(response.data.results);
+          console.log(response.data.results);
         } catch (error) {
           setError(error);
         } finally {

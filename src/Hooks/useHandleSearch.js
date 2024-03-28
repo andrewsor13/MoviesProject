@@ -71,7 +71,6 @@ const useHandleSearch = () => {
       try {
         const response = await axios.get(url, options);
         setReviews(response.data.results);
-        console.log(response.data.results);
       } catch (error) {
         throw new Error('There was an error fetching the reviews data.');
       } finally {

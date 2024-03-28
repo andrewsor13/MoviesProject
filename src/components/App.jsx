@@ -4,18 +4,17 @@ import HomePage from './HomePage/HomePage';
 import SearchPage from './SearchPage/SearchPage';
 import Container from './Container/Container';
 import Navigation from './Navigation/Navigation';
-import { TrendingMoviesProvider } from '../Store/TrendingDataContext';
 import MovieDetails from './MovieDetails/MovieDetails';
+import StoreProvider from 'Store';
 
 export const App = () => {
   return (
-    <TrendingMoviesProvider>
+    <StoreProvider>
       <div>
         <BrowserRouter>
           <Navigation />
           <Routes>
             <Route
-              index
               path="/MoviesProject"
               element={
                 <Container>
@@ -23,6 +22,7 @@ export const App = () => {
                 </Container>
               }
             ></Route>
+
             <Route
               path="/MoviesProject/search"
               element={
@@ -30,19 +30,15 @@ export const App = () => {
                   <SearchPage />
                 </Container>
               }
-            ></Route>
-            <Route
-              path="*"
-              element={
-                <Container>
-                  <HomePage />
-                </Container>
-              }
-            />
-            <Route path="/:movieId" element={<MovieDetails />}></Route>
+            >
+              <Route path=":query" element="" />
+            </Route>
+            <Route path=":movieId" element={<MovieDetails />} />
+
+            <Route path="*" element="" />
           </Routes>
         </BrowserRouter>
       </div>
-    </TrendingMoviesProvider>
+    </StoreProvider>
   );
 };
