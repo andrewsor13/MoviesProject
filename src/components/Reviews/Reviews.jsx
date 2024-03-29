@@ -51,34 +51,3 @@ export default function Reviews({ reviews }) {
     </div>
   );
 }
-
-// {review.content.length > 200 ? (
-//   <div>
-//     {!showMore ? (
-//       <p>
-//         {review.content.substring(0, 200)}...
-//         <span
-//           className={styles.showMore}
-//           onClick={handleShowMore}
-//         >
-//           show more
-//         </span>
-//       </p>
-//     ) : (
-//       <p>{review.content}</p>
-//     )}
-//     {showMore && (
-//       <p>
-//         {review.content}
-//         <span
-//           className={styles.showMore}
-//           onClick={handleShowMore}
-//         >
-//           show less
-//         </span>
-//       </p>
-//     )}
-//   </div>
-// ) : (
-//   <p className={styles.content}>{review.content}</p>
-// )}

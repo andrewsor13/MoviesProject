@@ -8,6 +8,7 @@
   background-color: #ffffff;
   box-sizing: content-box;
   transition: all 0.5s ease;
+  justify-content: space-between;
 }
 
 .coverContainer:hover {
@@ -68,5 +69,28 @@
 @media (max-width: 350px) {
   .rating {
     display: none;
+  }
+}
+@media (min-width: 480px) and (max-width: 768px) {
+  .title {
+    font-size: 14px;
+  }
+  .rating p {
+    font-size: 12px;
+  }
+  .description {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 20px;
+  }
+  .rating p {
+    font-size: 15px;
+  }
+  .description {
+    gap: 40px;
   }
 }

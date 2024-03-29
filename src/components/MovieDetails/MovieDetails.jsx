@@ -75,6 +75,26 @@ export default function MovieDetails() {
                       </div>
                     </div>
                     <p className={styles.detailsTagline}>{data.tagline}</p>
+                    <div className={styles.tabletDescription}>
+                      <p>
+                        <b>Description:</b>
+                      </p>
+                      <p className={styles.detailsOverview}>{data.overview}</p>
+                    </div>
+                    <ul className={styles.sideInfoExtraInfoTablet}>
+                      <li className={styles.extraInfo_item}>
+                        <p className={styles.extraInfo_item_text}>Status:</p>
+                        <p>{data?.status}</p>
+                      </li>
+                      <li className={styles.extraInfo_item}>
+                        <p className={styles.extraInfo_item_text}>Budget:</p>
+                        <p>{data?.budget.toLocaleString()}$</p>
+                      </li>
+                      <li className={styles.extraInfo_item}>
+                        <p className={styles.extraInfo_item_text}>Revenue:</p>
+                        <p>{data?.revenue.toLocaleString()}$</p>
+                      </li>
+                    </ul>
                   </div>
                 </div>
                 <div className={styles.sideInfo}>

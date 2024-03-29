@@ -77,6 +77,7 @@
   flex-direction: column;
   width: 100%;
   padding: 10px;
+  transition: all 0.5s ease;
 }
 .sideInfo {
   display: flex;
@@ -140,4 +141,88 @@
 .extrasButtonActive {
   background-color: var(--main-color);
   color: white;
+}
+.component {
+  display: none;
+}
+.activeComponent {
+  transition: all 0.5s ease;
+  display: block;
+}
+
+.tabletDescription {
+  display: none;
+}
+.sideInfoExtraInfoTablet {
+  display: none;
+}
+
+@media (min-width: 480px) and (max-width: 1200px) {
+  .title {
+    gap: 20px;
+  }
+  .tabletDescription {
+    display: block;
+  }
+  .details {
+    gap: 30px;
+  }
+  .sideInfoDescription {
+    display: none;
+  }
+  .sideInfoExtraInfo {
+    display: none;
+  }
+  .sideInfoExtraInfoTablet {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .title {
+    gap: 20px;
+  }
+  .tabletDescription {
+    display: block;
+  }
+  .details {
+    gap: 30px;
+  }
+  .sideInfoDescription {
+    display: none;
+  }
+  .sideInfoExtraInfo {
+    display: none;
+  }
+  .sideInfoExtraInfoTablet {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+  .title h2 {
+    font-size: 40px;
+  }
+  .detailsRating p {
+    font-size: 40px;
+  }
+  .detailsGenresGenre {
+    font-size: 20px;
+  }
+  .detailsInfo {
+    font-size: 20px;
+  }
+  .detailsTagline {
+    font-size: 15px;
+  }
+  .detailsOverview {
+    font-size: 20px;
+  }
+  .extraInfo_item p {
+    font-size: 20px;
+  }
+  .sideInfoExtraInfoTablet {
+    justify-content: space-evenly;
+  }
 }
