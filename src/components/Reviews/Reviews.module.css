@@ -40,3 +40,7 @@
 .content {
   margin: 0;
 }
+
+.showMore {
+  color: var(--main-color);
+}

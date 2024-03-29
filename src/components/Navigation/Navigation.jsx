@@ -20,7 +20,7 @@ export default function Navigation() {
           to="/MoviesProject/Search"
           className={styles.link}
         >
-          <p className={styles.linkOption}>Search</p>
+          <p className={styles.linkOption}>Explore</p>
         </NavLink>
       </div>
     </nav>

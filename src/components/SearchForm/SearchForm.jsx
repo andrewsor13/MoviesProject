@@ -32,7 +32,7 @@ export default function SearchForm() {
           className={styles.input}
         />
         <button type="submit" className={styles.searchButton}>
-          <IoSearchSharp size={25} />
+          <IoSearchSharp size={25} className={styles.icon} />
         </button>
       </form>
       {isLoading ? (
