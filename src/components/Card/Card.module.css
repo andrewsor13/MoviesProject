@@ -38,6 +38,8 @@
   gap: 15px;
   flex-direction: column;
   padding: 5px;
+  height: 20%;
+  justify-content: space-around;
 }
 
 .title {
@@ -79,7 +81,7 @@
     font-size: 12px;
   }
   .description {
-    gap: 20px;
+    height: 30%;
   }
 }
 
@@ -91,6 +93,6 @@
     font-size: 15px;
   }
   .description {
-    gap: 40px;
+    height: 30%;
   }
 }
