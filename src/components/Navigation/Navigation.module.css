@@ -1,4 +1,4 @@
-@import '../../Assets/variables.css';
+@import '../variables.css';
 
 .navigation {
   display: flex;

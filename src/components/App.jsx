@@ -4,6 +4,7 @@ import Container from './Container/Container';
 import Navigation from './Navigation/Navigation';
 import StoreProvider from 'Store';
 import LoadingPage from './LoadingPage/LoadingPage';
+import NotFoundPage from './NotFoundPage/NotFountPage';
 
 const LazyHomePage = lazy(() => import('./HomePage/HomePage'));
 
@@ -41,7 +42,7 @@ export const App = () => {
 
               <Route path=":movieId" element={<LazyMovieDetails />} />
 
-              <Route path="*" element="" />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
         </BrowserRouter>
