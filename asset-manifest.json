@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/MoviesProject/static/css/main.c996351e.css",
-    "main.js": "/MoviesProject/static/js/main.588e1420.js",
+    "main.css": "/MoviesProject/static/css/main.4bd18530.css",
+    "main.js": "/MoviesProject/static/js/main.422aa5ae.js",
     "static/css/105.4f84f31c.chunk.css": "/MoviesProject/static/css/105.4f84f31c.chunk.css",
     "static/js/105.45b69c1b.chunk.js": "/MoviesProject/static/js/105.45b69c1b.chunk.js",
     "static/css/987.ec153f7b.chunk.css": "/MoviesProject/static/css/987.ec153f7b.chunk.css",
@@ -11,9 +11,10 @@
     "static/js/202.23c2143d.chunk.js": "/MoviesProject/static/js/202.23c2143d.chunk.js",
     "static/js/41.dc9844ef.chunk.js": "/MoviesProject/static/js/41.dc9844ef.chunk.js",
     "static/js/187.d9fa0b89.chunk.js": "/MoviesProject/static/js/187.d9fa0b89.chunk.js",
+    "static/media/browser-error-404-icon.svg": "/MoviesProject/static/media/browser-error-404-icon.a35d6f1908cf15fbd5a68f279a5f52d8.svg",
     "index.html": "/MoviesProject/index.html",
-    "main.c996351e.css.map": "/MoviesProject/static/css/main.c996351e.css.map",
-    "main.588e1420.js.map": "/MoviesProject/static/js/main.588e1420.js.map",
+    "main.4bd18530.css.map": "/MoviesProject/static/css/main.4bd18530.css.map",
+    "main.422aa5ae.js.map": "/MoviesProject/static/js/main.422aa5ae.js.map",
     "105.4f84f31c.chunk.css.map": "/MoviesProject/static/css/105.4f84f31c.chunk.css.map",
     "105.45b69c1b.chunk.js.map": "/MoviesProject/static/js/105.45b69c1b.chunk.js.map",
     "987.ec153f7b.chunk.css.map": "/MoviesProject/static/css/987.ec153f7b.chunk.css.map",
@@ -25,7 +26,7 @@
     "187.d9fa0b89.chunk.js.map": "/MoviesProject/static/js/187.d9fa0b89.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c996351e.css",
-    "static/js/main.588e1420.js"
+    "static/css/main.4bd18530.css",
+    "static/js/main.422aa5ae.js"
   ]
 }
