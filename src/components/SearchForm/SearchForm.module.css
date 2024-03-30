@@ -9,7 +9,7 @@
 
 .form {
   display: flex;
-  width: 150px;
+  width: 100px;
   position: relative;
   transition: all 0.5s ease;
 }
@@ -21,11 +21,12 @@
 }
 
 .form:focus-within {
-  width: 300px;
+  width: 200px;
 }
 
 .icon {
   transition: color 0.3s ease;
+  color: black;
 }
 .form:focus-within .icon {
   color: var(--main-color);
@@ -38,4 +39,24 @@
   border: none;
   background-color: inherit;
   align-items: center;
+}
+
+@media (min-width: 768px) {
+  .form {
+    width: 300px;
+  }
+
+  .form:focus-within {
+    width: 500px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .form {
+    width: 400px;
+  }
+
+  .form:focus-within {
+    width: 600px;
+  }
 }
