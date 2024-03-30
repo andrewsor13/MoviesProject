@@ -16,7 +16,7 @@ export default function SearchForm() {
     setQuery(inputValue);
     navigate(`${inputValue}`);
     setInputValue('');
-    document.documentElement.style.zoom = '100%';
+    document.documentElement.style.zoom = '1';
   };
 
   const handleChange = e => {

@@ -1,6 +1,5 @@
 .loadingPage {
   margin: auto auto;
-  position: fixed;
   height: 100vh;
   background-color: white;
   display: flex;
