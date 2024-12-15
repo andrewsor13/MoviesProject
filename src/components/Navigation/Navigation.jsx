@@ -22,7 +22,7 @@ export default function Navigation() {
               location.pathname === '/MoviesProject' ? styles.activeLink : ''
             }`}
           >
-            Movies
+            Trending
           </p>
         </NavLink>
         {/* <NavLink
