@@ -6,6 +6,7 @@
   justify-content: center;
   box-sizing: border-box;
   margin: 15px 0px;
+  animation: fadeIn 0.5s ease;
 }
 
 .listItem {
@@ -29,5 +30,16 @@
 @media (min-width: 1200px) {
   .listItem {
     width: 20%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    /* transform: translateY(100px); */
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    /* transform: translateY(0px); */
   }
 }

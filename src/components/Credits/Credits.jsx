@@ -22,11 +22,11 @@ export default function Credits({ credits }) {
               </div>
             )}
 
-            <div className={styles.reviewer}>
-              <p className={styles.reviewerName}>
+            <div className={styles.actor}>
+              <p className={styles.actorName}>
                 <strong>{credit.name}</strong>
               </p>
-              <p className={styles.reviewerCharacter}>{credit.character}</p>
+              <p className={styles.actorCharacter}>{credit.character}</p>
             </div>
           </li>
         );

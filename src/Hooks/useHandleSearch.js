@@ -27,6 +27,8 @@ const useHandleSearch = () => {
       try {
         const response = await axios.get(url, options);
         setData(response.data);
+        console.log(response.data);
+        setIsLoading(false);
       } catch (error) {
         throw new Error('There was an error fetching the data.');
       } finally {
@@ -70,7 +72,7 @@ const useHandleSearch = () => {
       };
       try {
         const response = await axios.get(url, options);
-        setReviews(response.data.results);
+        setReviews(response.data);
       } catch (error) {
         throw new Error('There was an error fetching the reviews data.');
       } finally {
@@ -106,7 +108,6 @@ const useHandleSearch = () => {
     fetchDetails();
     fetchCredits();
     fetchReviews();
-    setIsLoading(false);
   };
 
   return {

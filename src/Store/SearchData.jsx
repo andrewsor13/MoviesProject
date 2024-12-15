@@ -7,12 +7,12 @@ export const SearchFormProvider = ({ children }) => {
   const [searchData, setSearchData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [query, setQuery] = useState();
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       // Verifică dacă query există înainte de a face solicitarea
-      if (query !== undefined) {
+      if (query !== undefined && query !== '') {
         const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
         const options = {
           method: 'GET',
@@ -25,6 +25,18 @@ export const SearchFormProvider = ({ children }) => {
         try {
           setIsLoading(true);
           const response = await axios.get(url, options);
+          // const movies = response.data.results;
+
+          // await Promise.all(
+          //   movies.map(movie => {
+          //     return new Promise((resolve, reject) => {
+          //       const img = new Image();
+          //       img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+          //       img.onload = resolve;
+          //       img.onerror = reject;
+          //     });
+          //   })
+          // );
           setSearchData(response.data.results);
           console.log(response.data.results);
         } catch (error) {
@@ -38,7 +50,7 @@ export const SearchFormProvider = ({ children }) => {
     fetchData();
   }, [query]);
 
-  const contextValue = { searchData, isLoading, error, setQuery };
+  const contextValue = { searchData, isLoading, error, setQuery, query };
 
   return (
     <SearchDataContext.Provider value={contextValue}>

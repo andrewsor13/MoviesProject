@@ -9,7 +9,9 @@ import Reviews from 'components/Reviews/Reviews';
 import Credits from 'components/Credits/Credits';
 
 export default function MovieDetails() {
-  const [revClick, setRevClick] = useState(true);
+  const [revClick, setRevClick] = useState(false);
+  const { fetchData, setItem, data, isLoading, credits, reviews } =
+    useHandleSearch();
 
   const handleRevClick = () => {
     setRevClick(true);
@@ -19,14 +21,26 @@ export default function MovieDetails() {
     setRevClick(false);
   };
 
+  const valueConverter = num => {
+    if (num >= 1e9) {
+      const convertedValue = (num / 1e9).toFixed(1);
+      return `${convertedValue}b $`;
+    } else if (num >= 1e6) {
+      const convertedValue = (num / 1e6).toFixed(1);
+      return `${convertedValue}m $`;
+    } else {
+      return `${num.toLocaleString()}$`;
+    }
+  };
+
   const { movieId } = useParams();
-  const { fetchData, setItem, data, isLoading, credits, reviews } =
-    useHandleSearch();
 
   useEffect(() => {
-    setItem(movieId);
-    fetchData();
-  }, [fetchData, setItem, movieId]);
+    if (movieId) {
+      setItem(movieId);
+      fetchData();
+    }
+  }, [fetchData, setItem, movieId, isLoading]);
 
   return (
     <>
@@ -73,30 +87,44 @@ export default function MovieDetails() {
                           <strong>{data.vote_average?.toFixed(1)}</strong>
                         </p>
                       </div>
+                      <p className={styles.detailsTagline}>{data.tagline}</p>
                     </div>
-                    <p className={styles.detailsTagline}>{data.tagline}</p>
+
                     <div className={styles.tabletDescription}>
                       <p>
                         <b>Description:</b>
                       </p>
                       <p className={styles.detailsOverview}>{data.overview}</p>
                     </div>
+
                     <ul className={styles.sideInfoExtraInfoTablet}>
                       <li className={styles.extraInfo_item}>
-                        <p className={styles.extraInfo_item_text}>Status:</p>
-                        <p>{data?.status}</p>
+                        <p className={styles.extraInfo_item_title}>Status:</p>
+                        <p className={styles.extraInfo_item_text}>
+                          {data?.status}
+                        </p>
                       </li>
                       <li className={styles.extraInfo_item}>
-                        <p className={styles.extraInfo_item_text}>Budget:</p>
-                        <p>{data?.budget.toLocaleString()}$</p>
+                        <p className={styles.extraInfo_item_title}>Budget:</p>
+                        <p className={styles.extraInfo_item_text}>
+                          {data?.budget === 0
+                            ? 'N/A'
+                            : valueConverter(data?.budget)}
+                        </p>
                       </li>
                       <li className={styles.extraInfo_item}>
-                        <p className={styles.extraInfo_item_text}>Revenue:</p>
-                        <p>{data?.revenue.toLocaleString()}$</p>
+                        <p className={styles.extraInfo_item_title}>Revenue:</p>
+                        <p className={styles.extraInfo_item_text}>
+                          {data?.revenue === 0
+                            ? 'N/A'
+                            : valueConverter(data?.revenue)}
+                        </p>
                       </li>
                     </ul>
                   </div>
                 </div>
+                <hr className={styles.line}></hr>
+
                 <div className={styles.sideInfo}>
                   <div className={styles.sideInfoDescription}>
                     <p>
@@ -104,18 +132,29 @@ export default function MovieDetails() {
                     </p>
                     <p className={styles.detailsOverview}>{data.overview}</p>
                   </div>
+                  <hr className={styles.line}></hr>
                   <ul className={styles.sideInfoExtraInfo}>
                     <li className={styles.extraInfo_item}>
-                      <p className={styles.extraInfo_item_text}>Status:</p>
-                      <p>{data?.status}</p>
+                      <p className={styles.extraInfo_item_title}>Status:</p>
+                      <p className={styles.extraInfo_item_text}>
+                        {data?.status}
+                      </p>
                     </li>
                     <li className={styles.extraInfo_item}>
-                      <p className={styles.extraInfo_item_text}>Budget:</p>
-                      <p>{data?.budget.toLocaleString()}$</p>
+                      <p className={styles.extraInfo_item_title}>Budget:</p>
+                      <p className={styles.extraInfo_item_text}>
+                        {data?.budget === 0
+                          ? 'N/A'
+                          : valueConverter(data?.budget)}
+                      </p>
                     </li>
                     <li className={styles.extraInfo_item}>
-                      <p className={styles.extraInfo_item_text}>Revenue:</p>
-                      <p>{data?.revenue.toLocaleString()}$</p>
+                      <p className={styles.extraInfo_item_title}>Revenue:</p>
+                      <p className={styles.extraInfo_item_text}>
+                        {data?.revenue === 0
+                          ? 'N/A'
+                          : valueConverter(data?.revenue)}
+                      </p>
                     </li>
                   </ul>
                 </div>
@@ -124,28 +163,31 @@ export default function MovieDetails() {
             <div className={styles.extras}>
               <button
                 className={`${styles.extrasButton} ${
-                  revClick ? styles.extrasButtonActive : ''
-                }`}
-                onClick={handleRevClick}
-              >
-                Reviews
-              </button>
-              <button
-                className={`${styles.extrasButton} ${
                   !revClick ? styles.extrasButtonActive : ''
                 }`}
                 onClick={handleCastClick}
               >
                 Cast
               </button>
+              <button
+                className={`${styles.extrasButton} ${
+                  revClick ? styles.extrasButtonActive : ''
+                }`}
+                onClick={handleRevClick}
+              >
+                Reviews (<b>{reviews?.total_results}</b>)
+              </button>
             </div>
-            <div className={styles.dataBlock}>
-              <div className={styles.dataBlock_castRev}>
-                {revClick ? (
-                  <Reviews reviews={reviews} />
-                ) : (
-                  <Credits credits={credits} />
-                )}
+            <div className={styles.elContainer}>
+              <div className={styles.dataBlock}>
+                <div className={styles.dataBlock_castRev}>
+                  {revClick ? (
+                    <Reviews reviews={reviews} />
+                  ) : (
+                    <Credits credits={credits} />
+                  )}
+                  <div className={styles.fadeElement}></div>
+                </div>
               </div>
             </div>
           </div>

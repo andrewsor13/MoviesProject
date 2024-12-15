@@ -8,8 +8,8 @@ export default function LoadingSpinner() {
     <div className={styles.loader}>
       <ColorRing
         visible={true}
-        height="80"
-        width="80"
+        height="160"
+        width="160"
         ariaLabel="blocks-loading"
         wrapperStyle={{}}
         wrapperClass="blocks-wrapper"

@@ -6,11 +6,11 @@ import StoreProvider from 'Store';
 import LoadingPage from './LoadingPage/LoadingPage';
 import NotFoundPage from './NotFoundPage/NotFountPage';
 
-const LazyHomePage = lazy(() => import('./HomePage/HomePage'));
+const LazyHomePage = lazy(() => import('../pages/HomePage'));
 
-const LazySearchPage = lazy(() => import('./SearchPage/SearchPage'));
+const LazyMovieDetails = lazy(() => import('../pages/MoviePage'));
 
-const LazyMovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const LazySearchPage = lazy(() => import('../pages/SearchPage'));
 
 export const App = () => {
   return (
@@ -30,17 +30,31 @@ export const App = () => {
               ></Route>
 
               <Route
-                path="/MoviesProject/search"
+                path="/MoviesProject/search/:query"
                 element={
                   <Container>
                     <LazySearchPage />
                   </Container>
                 }
-              >
-                <Route path=":query" element="" />
-              </Route>
+              ></Route>
 
-              <Route path=":movieId" element={<LazyMovieDetails />} />
+              <Route
+                path="/MoviesProject/details/:movieId"
+                element={
+                  <Container>
+                    <LazyMovieDetails />
+                  </Container>
+                }
+              />
+
+              <Route
+                path="/MoviesProject/search/:query/:movieId"
+                element={
+                  <Container>
+                    <LazyMovieDetails />
+                  </Container>
+                }
+              ></Route>
 
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

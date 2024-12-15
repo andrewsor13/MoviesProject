@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Navigation.module.css';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import SearchButton from 'components/SearchButton/SearchButton';
 
 export default function Navigation() {
   const location = useLocation();
@@ -21,10 +22,10 @@ export default function Navigation() {
               location.pathname === '/MoviesProject' ? styles.activeLink : ''
             }`}
           >
-            Home
+            Movies
           </p>
         </NavLink>
-        <NavLink
+        {/* <NavLink
           exact="true"
           to="/MoviesProject/Search"
           className={styles.link}
@@ -38,7 +39,8 @@ export default function Navigation() {
           >
             Explore
           </p>
-        </NavLink>
+        </NavLink> */}
+        <SearchButton />
       </div>
     </nav>
   );

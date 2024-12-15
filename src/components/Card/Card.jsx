@@ -2,6 +2,7 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import styles from './Card.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useSearchData } from 'Store/SearchData';
 
 export default function Card({
   poster_path,
@@ -11,10 +12,16 @@ export default function Card({
   movie_id,
 }) {
   const navigate = useNavigate();
+  const { query } = useSearchData();
 
   const handleClick = () => {
-    navigate(`/${movie_id}`);
+    if (query !== '' && query !== undefined) {
+      navigate(`/MoviesProject/search/${query}/${movie_id}`);
+    } else {
+      navigate(`/MoviesProject/details/${movie_id}`);
+    }
   };
+
   return (
     <div className={styles.coverContainer} onClick={handleClick}>
       <div className={styles.imageContainer}>

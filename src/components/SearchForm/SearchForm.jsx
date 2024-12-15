@@ -14,7 +14,7 @@ export default function SearchForm() {
   const handleSubmit = e => {
     e.preventDefault();
     setQuery(inputValue);
-    navigate(`${inputValue}`);
+    navigate(`/MoviesProject/search/${inputValue}`);
     setInputValue('');
     document.documentElement.style.zoom = '1';
   };

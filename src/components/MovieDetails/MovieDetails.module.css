@@ -1,6 +1,8 @@
 .container {
   background-color: white;
   border-radius: 20px;
+  animation: fadeIn 0.5s ease;
+  margin-bottom: 100px;
 }
 
 .posterContainer {
@@ -8,16 +10,16 @@
   margin-top: 20px;
   display: flex;
   flex-direction: row;
-  -webkit-box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.75);
-  padding: 5px;
+  box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.75);
+  padding: 10px;
   align-items: flex-start;
   justify-content: space-around;
 }
 
 .poster {
-  width: 40%;
+  height: 300px;
   border-radius: 20px;
-  -webkit-box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.75);
 }
 
 .details {
@@ -37,6 +39,7 @@
 .detailsGenres {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 5px;
 }
 .detailsGenresGenre {
@@ -51,7 +54,7 @@
 .title {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 .title h2 {
   font-size: 20px;
@@ -70,29 +73,31 @@
 .dataBlock {
   display: flex;
   background-color: white;
+  overflow: scroll;
+  width: 100%;
 }
 
 .dataBlock_castRev {
   display: flex;
   flex-direction: column;
-  width: 100%;
   padding: 10px;
   transition: all 0.5s ease;
 }
 .sideInfo {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
-  align-items: flex-start;
-  margin-top: 15px;
+  align-items: center;
+  margin: 15px 0;
+  gap: 15px;
 }
 .sideInfoDescription {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  width: 55%;
+  width: 85%;
   padding: 10px;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75); */
   border-radius: 10px;
 }
 
@@ -104,9 +109,9 @@
 .sideInfoExtraInfo {
   /* -webkit-box-shadow: -20px 0px 10px 2px rgba(255, 255, 255, 0.8); */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-end;
-  /* width: 40%; */
+  gap: 20px;
 }
 
 .extraInfo_item {
@@ -116,13 +121,16 @@
   align-items: flex-end;
 }
 
-.extraInfo_item_text {
+.extraInfo_item_title {
   font-weight: bold;
+}
+.extraInfo_item_text {
+  font-size: 14px;
 }
 
 .extras {
   display: flex;
-  margin-top: 20px;
+  margin-top: 40px;
   gap: 5px;
   justify-content: space-around;
 }
@@ -135,7 +143,7 @@
   border-radius: 10px;
   transition: all 0.5s ease;
   color: black;
-  -webkit-box-shadow: 0px 0px 5px 4px rgba(235, 235, 235, 1);
+  box-shadow: 0px 0px 5px 4px rgba(235, 235, 235, 1);
 }
 
 .extrasButtonActive {
@@ -157,15 +165,66 @@
   display: none;
 }
 
-@media (min-width: 480px) and (max-width: 1200px) {
-  .title {
-    gap: 20px;
+.line {
+  width: 80%;
+  color: gray;
+}
+.detailsOverview {
+  padding: 10px;
+}
+
+.elContainer {
+  position: relative;
+}
+
+.fadeElement {
+  width: 100px;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0,
+    #fff 100%
+  );
+  right: 0;
+  opacity: 0.6;
+}
+
+@media (min-width: 480px) {
+  .poster {
+    height: 430px;
+    width: 270px;
   }
-  .tabletDescription {
-    display: block;
+  .title {
+    gap: 40px;
   }
   .details {
     gap: 30px;
+    padding-left: 10px;
+  }
+  .sideInfoExtraInfo {
+    gap: 50px;
+  }
+  .extraInfo_item_title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .extraInfo_item_text {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    gap: 10px;
+  }
+  .poster {
+    height: 500px;
+    width: 330px;
+  }
+  .tabletDescription {
+    display: block;
   }
   .sideInfoDescription {
     display: none;
@@ -173,14 +232,35 @@
   .sideInfoExtraInfo {
     display: none;
   }
+
   .sideInfoExtraInfoTablet {
     display: flex;
     gap: 15px;
-    justify-content: center;
+  }
+  .line {
+    display: none;
+  }
+  .title h2 {
+    font-size: 35px;
+  }
+
+  .detailsInfo {
+    font-size: 20px;
+  }
+  .details {
+    gap: 30px;
   }
 }
 
 @media (min-width: 1200px) {
+  .posterContainer {
+    gap: 20px;
+    justify-content: center;
+  }
+  .poster {
+    height: 600px;
+    width: 400px;
+  }
   .title {
     gap: 20px;
   }
@@ -188,7 +268,7 @@
     display: block;
   }
   .details {
-    gap: 30px;
+    gap: 40px;
   }
   .sideInfoDescription {
     display: none;
@@ -198,8 +278,7 @@
   }
   .sideInfoExtraInfoTablet {
     display: flex;
-    gap: 15px;
-    justify-content: center;
+    gap: 50px;
   }
   .title h2 {
     font-size: 40px;
@@ -219,10 +298,30 @@
   .detailsOverview {
     font-size: 20px;
   }
-  .extraInfo_item p {
+
+  .extraInfo_item_title {
+    font-size: 25px;
+  }
+
+  .extraInfo_item_text {
     font-size: 20px;
   }
-  .sideInfoExtraInfoTablet {
-    justify-content: space-evenly;
+
+  .extras {
+    margin-bottom: 50px;
+  }
+
+  .extrasButton {
+    font-size: 20px;
+    padding: 10px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
