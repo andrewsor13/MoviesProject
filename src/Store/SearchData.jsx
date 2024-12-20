@@ -5,15 +5,14 @@ const SearchDataContext = createContext();
 
 export const SearchFormProvider = ({ children }) => {
   const [searchData, setSearchData] = useState();
+  const [pageNumber, setPageNumber] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [query, setQuery] = useState('');
-
   useEffect(() => {
     const fetchData = async () => {
-      // Verifică dacă query există înainte de a face solicitarea
       if (query !== undefined && query !== '') {
-        const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
+        const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${pageNumber}`;
         const options = {
           method: 'GET',
           headers: {
@@ -25,20 +24,7 @@ export const SearchFormProvider = ({ children }) => {
         try {
           setIsLoading(true);
           const response = await axios.get(url, options);
-          // const movies = response.data.results;
-
-          // await Promise.all(
-          //   movies.map(movie => {
-          //     return new Promise((resolve, reject) => {
-          //       const img = new Image();
-          //       img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-          //       img.onload = resolve;
-          //       img.onerror = reject;
-          //     });
-          //   })
-          // );
-          setSearchData(response.data.results);
-          console.log(response.data.results);
+          setSearchData(response.data);
         } catch (error) {
           setError(error);
         } finally {
@@ -48,9 +34,21 @@ export const SearchFormProvider = ({ children }) => {
     };
 
     fetchData();
-  }, [query]);
+  }, [query, pageNumber]);
 
-  const contextValue = { searchData, isLoading, error, setQuery, query };
+  const contextValue = {
+    searchData,
+    isLoading,
+    error,
+    setQuery,
+    query,
+    pageNumber,
+    setPageNumber,
+    resetPagination: () => {
+      setQuery('');
+      setPageNumber(1);
+    },
+  };
 
   return (
     <SearchDataContext.Provider value={contextValue}>

@@ -6,6 +6,7 @@ import { useTrendingData } from '../../Store/TrendingDataContext';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 export default function MoviesLayout({ data }) {
   const { isLoading, error } = useTrendingData();
+
   return (
     <div>
       {isLoading ? (
@@ -14,7 +15,7 @@ export default function MoviesLayout({ data }) {
         <p>{error}</p>
       ) : (
         <ul className={styles.list}>
-          {data.map(movie => (
+          {data.results.map(movie => (
             <li className={`${styles.listItem}`} key={movie.id}>
               <Card
                 poster_path={movie.poster_path}

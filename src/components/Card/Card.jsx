@@ -12,13 +12,13 @@ export default function Card({
   movie_id,
 }) {
   const navigate = useNavigate();
-  const { query } = useSearchData();
+  const { query, pageNumber } = useSearchData();
 
   const handleClick = () => {
     if (query !== '' && query !== undefined) {
-      navigate(`/MoviesProject/search/${query}/${movie_id}`);
+      navigate(`/MoviesProject/search/${query}/${pageNumber}/${movie_id}`);
     } else {
-      navigate(`/MoviesProject/details/${movie_id}`);
+      navigate(`/MoviesProject/details/${pageNumber}/${movie_id}`);
     }
   };
 

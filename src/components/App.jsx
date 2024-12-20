@@ -30,7 +30,7 @@ export const App = () => {
               ></Route>
 
               <Route
-                path="/MoviesProject/search/:query"
+                path="/MoviesProject/search/:query/:pageNumber"
                 element={
                   <Container>
                     <LazySearchPage />
@@ -48,7 +48,7 @@ export const App = () => {
               />
 
               <Route
-                path="/MoviesProject/search/:query/:movieId"
+                path="/MoviesProject/search/:query/:pageNumber/:movieId"
                 element={
                   <Container>
                     <LazyMovieDetails />

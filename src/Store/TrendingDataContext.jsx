@@ -21,19 +21,7 @@ export const TrendingMoviesProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url, options);
-        const movies = response.data.results;
-
-        await Promise.all(
-          movies.map(movie => {
-            return new Promise((resolve, reject) => {
-              const img = new Image();
-              img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-              img.onload = resolve;
-              img.onerror = reject;
-            });
-          })
-        );
-        setTrendingData(movies);
+        setTrendingData(response.data);
       } catch (error) {
         setError(error);
       } finally {

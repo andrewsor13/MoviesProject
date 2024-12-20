@@ -5,7 +5,7 @@ import { useSearchData } from 'Store/SearchData';
 import { useNavigate } from 'react-router-dom';
 
 export default function SearchButton() {
-  const { setQuery } = useSearchData();
+  const { setQuery, pageNumber } = useSearchData();
   const [inputValue, setInputValue] = useState('');
   const [windowSize, setWindowSize] = useState(window.screen.width);
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export default function SearchButton() {
     e.preventDefault();
     if (inputValue !== '') {
       setQuery(inputValue);
-      navigate(`/MoviesProject/search/${inputValue}`);
+      navigate(`/MoviesProject/search/${inputValue}/${pageNumber}`);
       setInputValue('');
       if (inputRef.current) {
         inputRef.current.blur();
