@@ -18,7 +18,7 @@ export default function Card({
     if (query !== '' && query !== undefined) {
       navigate(`/MoviesProject/search/${query}/${pageNumber}/${movie_id}`);
     } else {
-      navigate(`/MoviesProject/details/${pageNumber}/${movie_id}`);
+      navigate(`/MoviesProject/details/${movie_id}`);
     }
   };
 
