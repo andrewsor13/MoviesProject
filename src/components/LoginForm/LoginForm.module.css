@@ -1,0 +1,96 @@
+.formContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
+  background-color: #ffffff;
+  width: 80%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.formItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  width: 60%;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+input[type='password']::placeholder {
+  transform: translateY(3px);
+}
+
+.label {
+  align-self: flex-start;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.passCheckBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.passCheck {
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  color: gray;
+  transition: all 0.3s ease;
+}
+
+.valid {
+  color: green;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.submitButton {
+  border: none;
+  border-radius: 15px;
+  background-color: var(--main-color);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.62;
+  text-align: center;
+  letter-spacing: 0.03em;
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
+  padding: 6px 22px;
+}
+
+.submitButton:hover,
+.submitButton:active {
+  color: #fff;
+  font-weight: bold;
+}

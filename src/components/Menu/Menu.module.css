@@ -1,0 +1,74 @@
+.menuContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #404040;
+  padding: 20px 0px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px 0px 8px 8px;
+  z-index: 999;
+}
+.animateIn {
+  animation: 0.5s slideInFromTheTop ease-in-out;
+}
+.animateOut {
+  animation: 0.5s slideOutToTheTop ease-in-out;
+}
+
+.topContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.closeButton {
+  margin-right: 13px;
+}
+
+.menuLine {
+  width: 100%;
+}
+
+.menuOptions {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 25px 20px;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.linkOption {
+  color: white;
+  font-weight: bold;
+
+  font-size: 20px;
+}
+
+@keyframes slideInFromTheTop {
+  0% {
+    transform: translateY(-300px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes slideOutToTheTop {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-400px);
+  }
+}

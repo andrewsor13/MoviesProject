@@ -47,6 +47,7 @@ export default function SearchButton() {
           onChange={handleChange}
           ref={inputRef}
           className={styles.input}
+          placeholder="Search..."
         />
         <button type="submit" className={styles.searchButton}>
           <IoSearchCircleSharp

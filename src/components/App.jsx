@@ -6,11 +6,17 @@ import StoreProvider from 'Store';
 import LoadingPage from './LoadingPage/LoadingPage';
 import NotFoundPage from './NotFoundPage/NotFountPage';
 
-const LazyHomePage = lazy(() => import('../pages/HomePage'));
+const LazyMoviePage = lazy(() => import('../pages/HomePage'));
 
-const LazyMovieDetails = lazy(() => import('../pages/MoviePage'));
+const LazyTvShowsPage = lazy(() => import('../pages/TvShowsPage'));
+
+const LazyMovieDetails = lazy(() => import('../pages/MovieInfo'));
 
 const LazySearchPage = lazy(() => import('../pages/SearchPage'));
+
+const LazyLoginPage = lazy(() => import('../pages/LoginPage'));
+
+const LazyRegisterPage = lazy(() => import('../pages/RegisterPage'));
 
 export const App = () => {
   return (
@@ -24,7 +30,39 @@ export const App = () => {
                 path="/MoviesProject"
                 element={
                   <Container>
-                    <LazyHomePage />
+                    <LazyMoviePage />
+                  </Container>
+                }
+              ></Route>
+              <Route
+                path="/MoviesProject/singUp"
+                element={
+                  <Container>
+                    <LazyRegisterPage />
+                  </Container>
+                }
+              ></Route>
+              <Route
+                path="/MoviesProject/signIn"
+                element={
+                  <Container>
+                    <LazyLoginPage />
+                  </Container>
+                }
+              ></Route>
+              <Route
+                path="/MoviesProject/movies"
+                element={
+                  <Container>
+                    <LazyMoviePage />
+                  </Container>
+                }
+              ></Route>
+              <Route
+                path="/MoviesProject/tvShows"
+                element={
+                  <Container>
+                    <LazyTvShowsPage />
                   </Container>
                 }
               ></Route>
