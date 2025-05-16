@@ -14,6 +14,7 @@
 .navigationRight {
   display: flex;
   align-items: center;
+  flex-direction: row;
   gap: 15px;
   width: 50%;
   justify-content: flex-end;
@@ -30,7 +31,7 @@
 .titleFirst,
 .titleSecond {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 22px;
 }
 
 .linkOption {
@@ -38,11 +39,23 @@
   font-weight: bold;
 
   font-size: 14px;
+  transition: color 0.4s ease;
+}
+
+.linkOption:hover {
+  color: var(--main-color);
 }
 
 .activeLink {
   color: var(--main-color);
   font-weight: bold;
+}
+
+.userButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
 }
 
 @media (min-width: 480px) {
@@ -53,6 +66,10 @@
   .linkOption {
     font-size: 18px;
   }
+
+  .navigationRight {
+    width: 60%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -62,6 +79,9 @@
   }
   .linkOption {
     font-size: 22px;
+  }
+  .navigation {
+    justify-content: center;
   }
 }
 

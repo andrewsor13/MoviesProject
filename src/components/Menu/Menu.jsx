@@ -16,7 +16,7 @@ export default function Menu({ handleMenuClick, isOpen }) {
     setTimeout(() => {
       setAnimateOut(false);
       handleMenuClick();
-    }, 400);
+    }, 250);
   };
   useEffect(() => {
     function handleClickOutside(event) {
@@ -33,6 +33,7 @@ export default function Menu({ handleMenuClick, isOpen }) {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen, animateOut]);
+
   useEffect(() => {
     if (isOpen && !animateOut) {
       document.body.style.overflow = 'hidden';
@@ -44,6 +45,7 @@ export default function Menu({ handleMenuClick, isOpen }) {
       document.body.style.overflow = 'auto';
     };
   }, [isOpen, animateOut]);
+
   return (
     <div
       ref={menuRef}
@@ -61,18 +63,32 @@ export default function Menu({ handleMenuClick, isOpen }) {
         <hr className={styles.menuLine} />
       </div>
       <div className={styles.menuOptions}>
-        <NavLink
-          onClick={() => {
-            resetPagination();
-            toggleMenu();
-          }}
-          exact="true"
-          to="/MoviesProject/signIn"
-          className={styles.link}
-        >
-          <FaUserCircle color="white" size={20} />
-          <p className={styles.linkOption}>Sign in</p>
-        </NavLink>{' '}
+        <div className={styles.accountBlock}>
+          <NavLink
+            onClick={() => {
+              resetPagination();
+              toggleMenu();
+            }}
+            exact="true"
+            to="/MoviesProject/signIn"
+            className={styles.link}
+          >
+            <FaUserCircle color="white" size={20} />
+            <p className={styles.linkOption}>Sign in</p>
+          </NavLink>
+          <p className={styles.linkOption}>/</p>
+          <NavLink
+            onClick={() => {
+              resetPagination();
+              toggleMenu();
+            }}
+            exact="true"
+            to="/MoviesProject/signUp"
+            className={styles.link}
+          >
+            <p className={styles.linkOption}>Sign up</p>
+          </NavLink>
+        </div>
         <NavLink
           onClick={() => {
             resetPagination();
@@ -84,19 +100,31 @@ export default function Menu({ handleMenuClick, isOpen }) {
         >
           <BiCameraMovie size={20} color="white" />
           <p className={styles.linkOption}>Movies</p>
-        </NavLink>{' '}
+        </NavLink>
         <NavLink
           onClick={() => {
             resetPagination();
             toggleMenu();
           }}
           exact="true"
-          to="/MoviesProject/tvShows"
+          to="/MoviesProject/profile"
+          className={styles.link}
+        >
+          <FaUserCircle size={20} color="white" />
+          <p className={styles.linkOption}>MyProfile</p>
+        </NavLink>
+        <NavLink
+          onClick={() => {
+            resetPagination();
+            toggleMenu();
+          }}
+          exact="true"
+          to="/MoviesProject/favorites"
           className={styles.link}
         >
           <BiMoviePlay size={20} color="white" />
-          <p className={styles.linkOption}>Tv shows</p>
-        </NavLink>{' '}
+          <p className={styles.linkOption}>My list</p>
+        </NavLink>
       </div>
     </div>
   );

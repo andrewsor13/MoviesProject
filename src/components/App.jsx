@@ -5,10 +5,9 @@ import Navigation from './Navigation/Navigation';
 import StoreProvider from 'Store';
 import LoadingPage from './LoadingPage/LoadingPage';
 import NotFoundPage from './NotFoundPage/NotFountPage';
+import PrivateRoutes from '../routes/PrivateRoutes';
 
 const LazyMoviePage = lazy(() => import('../pages/HomePage'));
-
-const LazyTvShowsPage = lazy(() => import('../pages/TvShowsPage'));
 
 const LazyMovieDetails = lazy(() => import('../pages/MovieInfo'));
 
@@ -26,6 +25,10 @@ export const App = () => {
           <Navigation />
           <Suspense fallback={<LoadingPage />}>
             <Routes>
+              <Route element={<PrivateRoutes />}>
+                <Route path="/MoviesProject/profile/:uid"></Route>
+                <Route path="/MoviesProject/:uid/favorites"></Route>
+              </Route>
               <Route
                 path="/MoviesProject"
                 element={
@@ -35,7 +38,7 @@ export const App = () => {
                 }
               ></Route>
               <Route
-                path="/MoviesProject/singUp"
+                path="/MoviesProject/signUp"
                 element={
                   <Container>
                     <LazyRegisterPage />
@@ -58,15 +61,6 @@ export const App = () => {
                   </Container>
                 }
               ></Route>
-              <Route
-                path="/MoviesProject/tvShows"
-                element={
-                  <Container>
-                    <LazyTvShowsPage />
-                  </Container>
-                }
-              ></Route>
-
               <Route
                 path="/MoviesProject/search/:query/:pageNumber"
                 element={
@@ -94,7 +88,7 @@ export const App = () => {
                 }
               ></Route>
 
-              <Route path="*" element={<NotFoundPage />} />
+              <Route path="*" element={<LazyMoviePage />} />
             </Routes>
           </Suspense>
         </BrowserRouter>

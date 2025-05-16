@@ -8,16 +8,18 @@ import { FaUserCircle } from 'react-icons/fa';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Menu from 'components/Menu/Menu';
+import { useAuth } from '../../Store/AuthContext';
 
 export default function Navigation() {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
   const location = useLocation();
   const { resetPagination } = useSearchData();
+  const { user } = useAuth();
+  const isAuth = !!user;
 
   const handleMenuClick = () => {
     setIsMenuActive(!isMenuActive);
-    console.log(isMenuActive);
   };
 
   useEffect(() => {
@@ -44,47 +46,55 @@ export default function Navigation() {
           <span className={styles.titleSecond}>Page</span>
         </p>
       </NavLink>
-      <div className={styles.navigationRight}>
-        <SearchButton />
-        {width < 480 ? (
+      {width < 600 ? (
+        <div className={styles.navigationRight}>
+          <SearchButton />
           <GiHamburgerMenu
             onClick={() => {
               handleMenuClick();
             }}
             size={20}
           />
-        ) : (
-          <div className={styles.navigationRight}>
-            <NavLink
-              onClick={resetPagination}
-              exact="true"
-              to="/MoviesProject"
-              className={styles.link}
+        </div>
+      ) : (
+        <div className={styles.navigationRight}>
+          <SearchButton />
+          <NavLink
+            onClick={resetPagination}
+            exact="true"
+            to="/MoviesProject"
+            className={styles.link}
+          >
+            <p
+              className={`${styles.linkOption} ${
+                location.pathname === '/MoviesProject' ? styles.activeLink : ''
+              }`}
             >
-              <p
-                className={`${styles.linkOption} ${
-                  location.pathname === '/MoviesProject'
-                    ? styles.activeLink
-                    : ''
-                }`}
-              >
-                Trending
-              </p>
-            </NavLink>
+              Trending
+            </p>
+          </NavLink>
+          {isAuth ? (
+            <div className={styles.userButton}>
+              <FaUserCircle size={25} />
+              <IoMdArrowDropdown size={20} />
+            </div>
+          ) : (
             <NavLink
-              onClick={resetPagination}
+              onClick={() => {
+                resetPagination();
+              }}
               exact="true"
-              to="/MoviesProject"
+              to="/MoviesProject/signIn"
               className={styles.link}
             >
               <p className={styles.linkOption}>Sign in</p>
             </NavLink>
-          </div>
-        )}
-        {isMenuActive ? (
-          <Menu handleMenuClick={handleMenuClick} isOpen={isMenuActive} />
-        ) : null}
-      </div>
+          )}
+        </div>
+      )}
+      {isMenuActive ? (
+        <Menu handleMenuClick={handleMenuClick} isOpen={isMenuActive} />
+      ) : null}
     </nav>
   );
 }

@@ -7,12 +7,12 @@ import { useNavigate } from 'react-router-dom';
 export default function SearchButton() {
   const { setQuery, pageNumber } = useSearchData();
   const [inputValue, setInputValue] = useState('');
-  const [windowSize, setWindowSize] = useState(window.screen.width);
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
   const navigate = useNavigate();
   const inputRef = useRef(null);
 
   const handleResize = () => {
-    setWindowSize(window.screen.width);
+    setWindowSize(window.innerWidth);
   };
 
   const handleSubmit = e => {
@@ -51,7 +51,7 @@ export default function SearchButton() {
         />
         <button type="submit" className={styles.searchButton}>
           <IoSearchCircleSharp
-            size={windowSize >= 768 ? 25 : 20}
+            size={windowSize >= 1024 ? 30 : windowSize >= 768 ? 25 : 20}
             className={styles.icon}
           />
         </button>

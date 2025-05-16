@@ -17,6 +17,7 @@
   width: 100%;
   padding: 5px;
   border-radius: 10px;
+  opacity: 0.5;
 }
 
 .form:focus-within {
@@ -34,7 +35,7 @@
 
 .searchButton {
   position: absolute;
-  top: 3px;
+  top: 5px;
   right: 0px;
   border: none;
   background-color: inherit;
@@ -48,17 +49,17 @@
   }
 
   .form:focus-within {
-    width: 150px;
+    width: 220px;
   }
 }
 
 @media (min-width: 768px) {
   .form {
-    width: 120px;
+    width: 170px;
   }
 
   .form:focus-within {
-    width: 200px;
+    width: 250px;
   }
   .input {
     padding: 10px;
@@ -71,10 +72,18 @@
 
 @media (min-width: 1200px) {
   .form {
-    width: 120px;
+    width: 200px;
   }
 
   .form:focus-within {
-    width: 200px;
+    width: 300px;
+  }
+
+  .input {
+    font-size: 20px;
+  }
+
+  .searchButton {
+    top: 8px;
   }
 }

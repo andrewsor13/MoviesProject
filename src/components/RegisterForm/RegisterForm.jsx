@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import styles from './LoginForm.module.css';
+import styles from './RegisterForm.module.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaCheckCircle } from 'react-icons/fa';
 import { useAuth } from 'Store/AuthContext';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
+  const { register } = useAuth();
   const [password, setPassword] = useState('');
-  const { login } = useAuth();
-
   const [check, setCheck] = useState({
     hasUpperCase: false,
     hasNumber: false,
@@ -36,16 +35,16 @@ export default function LoginPage() {
     e.preventDefault();
     const allTrue = Object.values(check).every(value => value === true);
     if (allTrue) {
-      handleLogin();
+      handleRegister();
     } else {
       console.log('Parola nu este puternica!');
     }
   };
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     try {
-      const user = await login(email, password);
-      console.log('User ID (UID):', user.user.uid);
+      const user = await register(email, password);
+      console.log('User ID (UID):', user.uid);
       navigate(`/MoviesProject`);
       setEmail('');
       setPassword('');
@@ -111,17 +110,17 @@ export default function LoginPage() {
           </div>
         </div>
         <div className={styles.registerBlock}>
-          <p className={styles.registerText}>Don't have an account?</p>
+          <p className={styles.registerText}>Allready have an account?</p>
           <NavLink
             exact="true"
-            to="/MoviesProject/signUp"
+            to="/MoviesProject/signIn"
             className={styles.link}
           >
-            <p className={styles.registerLink}>Sign Up now.</p>
+            <p className={styles.registerLink}>Sign in now.</p>
           </NavLink>
         </div>
         <button type="submit" className={styles.submitButton}>
-          Sign In
+          Sign Up
         </button>
       </form>
     </div>
