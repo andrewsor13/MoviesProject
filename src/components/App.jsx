@@ -4,7 +4,6 @@ import Container from './Container/Container';
 import Navigation from './Navigation/Navigation';
 import StoreProvider from 'Store';
 import LoadingPage from './LoadingPage/LoadingPage';
-import NotFoundPage from './NotFoundPage/NotFountPage';
 import PrivateRoutes from '../routes/PrivateRoutes';
 
 const LazyMoviePage = lazy(() => import('../pages/HomePage'));

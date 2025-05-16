@@ -19,23 +19,26 @@ export default function Menu({ handleMenuClick, isOpen }) {
     }, 250);
   };
   useEffect(() => {
+    if (!isOpen) return;
+
     function handleClickOutside(event) {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        toggleMenu();
+        setAnimateOut(true);
+        setTimeout(() => {
+          setAnimateOut(false);
+          handleMenuClick();
+        }, 250);
       }
     }
 
-    if (isOpen && !animateOut) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen, animateOut]);
-
+  }, [isOpen, handleMenuClick]);
   useEffect(() => {
-    if (isOpen && !animateOut) {
+    if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
@@ -44,7 +47,7 @@ export default function Menu({ handleMenuClick, isOpen }) {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [isOpen, animateOut]);
+  }, [isOpen]);
 
   return (
     <div
