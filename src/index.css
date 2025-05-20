@@ -9,7 +9,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
   overscroll-behavior: none;
-  background-color: white;
+}
+html,
+body,
+#root {
+  background-color: #ffffff;
 }
 
 code {
