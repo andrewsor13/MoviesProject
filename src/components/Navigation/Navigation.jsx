@@ -9,14 +9,18 @@ import { IoMdArrowDropdown } from 'react-icons/io';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Menu from 'components/Menu/Menu';
 import { useAuth } from '../../Store/AuthContext';
+import DropdownMenu from 'components/DropdownMenu/DropdownMenu';
 
 export default function Navigation() {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
+  const [isDropdownMenuVisible, setIsDropdownMenuVisible] = useState(false);
   const location = useLocation();
   const { resetPagination } = useSearchData();
   const { user } = useAuth();
   const isAuth = !!user;
+
+  const toggleDropDown = () => setIsDropdownMenuVisible(!isDropdownMenuVisible);
 
   const handleMenuClick = () => {
     setIsMenuActive(!isMenuActive);
@@ -59,6 +63,31 @@ export default function Navigation() {
       ) : (
         <div className={styles.navigationRight}>
           <SearchButton />
+
+          {isAuth ? (
+            <div className={styles.userButton} onClick={toggleDropDown}>
+              <FaUserCircle size={width < 768 ? 25 : 30} />
+              <IoMdArrowDropdown size={width < 768 ? 20 : 25} />
+
+              {isDropdownMenuVisible && (
+                <div className={styles.dropdownContainer}>
+                  <DropdownMenu
+                    isClicked={isDropdownMenuVisible}
+                    toggle={toggleDropDown}
+                  />
+                </div>
+              )}
+            </div>
+          ) : (
+            <NavLink
+              onClick={resetPagination}
+              exact="true"
+              to="/MoviesProject/signIn"
+              className={styles.link}
+            >
+              <p className={styles.linkOption}>Sign in</p>
+            </NavLink>
+          )}
           <NavLink
             onClick={resetPagination}
             exact="true"
@@ -73,23 +102,6 @@ export default function Navigation() {
               Trending
             </p>
           </NavLink>
-          {isAuth ? (
-            <div className={styles.userButton}>
-              <FaUserCircle size={25} />
-              <IoMdArrowDropdown size={20} />
-            </div>
-          ) : (
-            <NavLink
-              onClick={() => {
-                resetPagination();
-              }}
-              exact="true"
-              to="/MoviesProject/signIn"
-              className={styles.link}
-            >
-              <p className={styles.linkOption}>Sign in</p>
-            </NavLink>
-          )}
         </div>
       )}
       {isMenuActive ? (

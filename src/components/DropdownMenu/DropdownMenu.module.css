@@ -1,0 +1,68 @@
+.menuContainer {
+  position: absolute;
+  top: 30px;
+  right: -140px;
+  background-color: #404040;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 25px 20px;
+  z-index: 999;
+  opacity: 0.9;
+}
+.animateIn {
+  animation: 0.3s slideInFromTheTop ease-in-out;
+}
+
+.menuOptions {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+.accountBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.linkOption {
+  color: white;
+  font-weight: bold;
+
+  font-size: 25px;
+}
+
+@keyframes slideInFromTheTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 0.9;
+
+    transform: translateY(0px);
+  }
+}
+
+@media (min-width: 600px) {
+  .linkOption {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .linkOption {
+    font-size: 25px;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Profile.module.css';
 import { useAuth } from 'Store/AuthContext';
 import {
@@ -14,11 +14,12 @@ import { FaCheckCircle } from 'react-icons/fa';
 
 export default function Profile() {
   const { user } = useAuth();
-  const [nickName, setNickName] = useState(user.displayName);
+  const [nickName, setNickName] = useState('');
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [nickNameCLick, setNickNameClick] = useState(false);
   const [passwordClick, setPasswordClick] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
   const [check, setCheck] = useState({
     hasUpperCase: false,
     hasNumber: false,
@@ -47,7 +48,7 @@ export default function Profile() {
   const handleNickNameClick = () => {
     setPasswordClick(false);
     setNickNameClick(!nickNameCLick);
-    setNickName(user.displayName);
+    setNickName(user?.displayName ?? '');
   };
 
   const handlePasswordClick = () => {
@@ -118,51 +119,66 @@ export default function Profile() {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.profileContainer}>
         <div className={styles.dataContainer}>
-          <h3>Nickname:</h3>
-          {!nickNameCLick ? (
-            <p className={styles.text}>{user.displayName}</p>
-          ) : (
-            <form
-              onSubmit={handleNickNameChange}
+          <h3 className={styles.element}>Nickname:</h3>
+          <div className={styles.nickEditContainer}>
+            {!nickNameCLick ? (
+              <p className={styles.text}>{user.displayName}</p>
+            ) : (
+              <form
+                onSubmit={handleNickNameChange}
+                className={
+                  nickNameCLick
+                    ? `${styles.nicknameAnimation} ${styles.form} `
+                    : `${styles.form}`
+                }
+                name="Change nickname"
+              >
+                <input
+                  className={styles.input}
+                  placeholder={user.displayName}
+                  onChange={handleNickNameInput}
+                  value={nickName}
+                  type="text"
+                  name="Nickname"
+                ></input>
+                <button className={styles.saveButton} type="submit">
+                  Save
+                </button>
+              </form>
+            )}
+            <LiaEdit
+              onClick={handleNickNameClick}
               className={
-                nickNameCLick
-                  ? `${styles.nicknameAnimation} ${styles.form} `
-                  : `${styles.form}`
+                !nickNameCLick
+                  ? `${styles.editButton}`
+                  : `${styles.editButton} ${styles.nicknameAnimation}`
               }
-            >
-              <input
-                className={styles.input}
-                placeholder={user.displayName}
-                onChange={handleNickNameInput}
-                value={nickName}
-                type="text"
-              ></input>
-              <button className={styles.saveButton} type="submit">
-                Save
-              </button>
-            </form>
-          )}
-          <LiaEdit
-            onClick={handleNickNameClick}
-            className={
-              !nickNameCLick
-                ? `${styles.editButton}`
-                : `${styles.editButton} ${styles.nicknameAnimation}`
-            }
-            size={20}
-            color="#469ae8"
-          />
+              size={width < 768 ? 25 : 35}
+              color="#469ae8"
+            />
+          </div>
         </div>
         <div className={styles.dataContainer}>
-          <h3>Email:</h3>
+          <h3 className={styles.element}>Email:</h3>
           <p className={styles.text}>{user.email}</p>
         </div>
         <div className={styles.dataContainer}>
-          <h3>Created at:</h3>
+          <h3 className={styles.element}>Created at:</h3>
           <p className={styles.text}>
             {new Date(user.metadata.creationTime).toLocaleDateString('ro-RO')}
           </p>
@@ -186,6 +202,7 @@ export default function Profile() {
                 <form
                   onSubmit={handlePasswordChange}
                   className={styles.passwordForm}
+                  name="Change Password"
                 >
                   <label>Old password</label>
                   <input
@@ -194,6 +211,7 @@ export default function Profile() {
                     placeholder="********"
                     onChange={handleOldPasswordInput}
                     value={oldPassword}
+                    name="Old Password"
                   />
 
                   <label>New password</label>
@@ -203,6 +221,7 @@ export default function Profile() {
                     placeholder="********"
                     onChange={handleNewPasswordInput}
                     value={newPassword}
+                    name="New Password"
                   />
 
                   <div className={styles.passCheckBlock}>

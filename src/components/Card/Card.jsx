@@ -7,6 +7,13 @@ import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { useAuth } from 'Store/AuthContext';
 import Notiflix from 'notiflix';
 
+Notiflix.Notify.init({
+  timeout: 1000,
+  position: 'left-bottom',
+  clickToClose: true,
+  pauseOnHover: false,
+});
+
 export default function Card({
   poster_path,
   title,

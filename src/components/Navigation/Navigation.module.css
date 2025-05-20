@@ -58,6 +58,10 @@
   cursor: pointer;
 }
 
+.dropdownContainer {
+  position: relative;
+}
+
 @media (min-width: 480px) {
   .titleFirst,
   .titleSecond {
@@ -93,5 +97,9 @@
 
   .linkOption {
     font-size: 25px;
+  }
+
+  .navigationRight {
+    gap: 25px;
   }
 }
