@@ -43,7 +43,7 @@ export default function LoginPage() {
 
   const handleRegister = async () => {
     try {
-      const user = await register(email, password);
+      await register(email, password);
       navigate(`/MoviesProject`);
       setEmail('');
       setPassword('');
