@@ -7,11 +7,52 @@ import { FaStar } from 'react-icons/fa';
 import LoadingSpinner from 'components/LoadingSpinner/LoadingSpinner';
 import Reviews from 'components/Reviews/Reviews';
 import Credits from 'components/Credits/Credits';
+import Notiflix from 'notiflix';
+import { useAuth } from 'Store/AuthContext';
+import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 
 export default function MovieDetails() {
   const [revClick, setRevClick] = useState(false);
   const { fetchData, setItem, data, isLoading, credits, reviews } =
     useHandleSearch();
+  const { movieId } = useParams();
+  const [hovered, setHovered] = useState(false);
+  const { user, favorites, addFavorite, fetchFavorites, deleteFavorite } =
+    useAuth();
+  const [favorite, setFavorite] = useState(false);
+
+  useEffect(() => {
+    if (!user) {
+      setFavorite(false);
+      return;
+    }
+
+    const isFavorite = favorites?.some(
+      fav => fav.movie_id?.toString() === movieId.toString()
+    );
+    setFavorite(isFavorite);
+  }, [favorites, user, movieId]);
+
+  const toggleFavorite = async () => {
+    if (!user) {
+      Notiflix.Notify.failure('You need to log in to save to favorites.');
+      return;
+    }
+
+    try {
+      if (favorite) {
+        await deleteFavorite(movieId);
+        Notiflix.Notify.success('Deleted from favorites!');
+      } else {
+        await addFavorite(movieId);
+        Notiflix.Notify.success('Added to favorites!');
+      }
+
+      await fetchFavorites(user.uid);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleRevClick = () => {
     setRevClick(true);
@@ -33,8 +74,6 @@ export default function MovieDetails() {
     }
   };
 
-  const { movieId } = useParams();
-
   useEffect(() => {
     if (movieId) {
       setItem(movieId);
@@ -52,11 +91,26 @@ export default function MovieDetails() {
             {data && (
               <div>
                 <div className={styles.posterContainer}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
-                    alt="Movie Poster"
-                    className={styles.poster}
-                  />
+                  <div className={styles.imageContainer}>
+                    <div
+                      className={styles.favoriteIcon}
+                      onMouseEnter={() => setHovered(true)}
+                      onMouseLeave={() => setHovered(false)}
+                      onClick={toggleFavorite}
+                    >
+                      {favorite || hovered ? (
+                        <MdFavorite size={20} color="#f44336" />
+                      ) : (
+                        <MdFavoriteBorder size={20} color="black" />
+                      )}
+                    </div>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+                      alt="Movie Poster"
+                      className={styles.poster}
+                    />
+                  </div>
+
                   <div className={styles.details}>
                     <div className={styles.title}>
                       <h2>
