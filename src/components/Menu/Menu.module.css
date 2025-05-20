@@ -12,10 +12,10 @@
   z-index: 999;
 }
 .animateIn {
-  animation: 0.3s slideInFromTheTop ease-in-out;
+  animation: 0.2s slideInFromTheTop ease-in-out;
 }
 .animateOut {
-  animation: 0.3s slideOutToTheTop ease-out;
+  animation: 0.2s slideOutToTheTop ease-out;
 }
 
 .topContainer {
@@ -39,8 +39,8 @@
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
-  padding: 25px 20px;
+  gap: 25px;
+  padding: 20px 15px;
 }
 
 .accountBlock {
@@ -60,7 +60,7 @@
   color: white;
   font-weight: bold;
 
-  font-size: 20px;
+  font-size: 25px;
 }
 
 @keyframes slideInFromTheTop {

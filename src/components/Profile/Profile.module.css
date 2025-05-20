@@ -1,0 +1,182 @@
+.container {
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0px 0px 10px 3px rgba(84, 84, 84, 0.75);
+  padding: 40px 20px;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.dataContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.dataPassContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.editButton:hover {
+  cursor: pointer;
+}
+
+h3 {
+  width: 30%;
+  font-size: 15px;
+}
+
+.changePasswordButton {
+  padding: 8px;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  color: black;
+  box-shadow: 0px 0px 5px 4px rgba(235, 235, 235, 1);
+  background-color: var(--main-color);
+  color: white;
+}
+
+.changePasswordButton:hover {
+  background-color: rgb(54, 122, 185);
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  transitions: all 0.5s ease;
+  overflow: hidden;
+}
+
+.input {
+  border-radius: 10px;
+  border: 1px solid gray;
+  padding: 2px;
+  width: 80%;
+}
+
+.passInput {
+  border-radius: 10px;
+  border: 1px solid gray;
+  width: 80%;
+  padding: 4px;
+  line-height: 20px;
+}
+
+.text {
+  font-size: 14px;
+}
+
+.nicknameAnimation {
+  animation: fadeInNickname 0.5s ease;
+}
+
+.saveButton {
+  padding: 6px;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  color: black;
+  box-shadow: 0px 0px 5px 4px rgba(235, 235, 235, 1);
+  background-color: var(--main-color);
+  color: white;
+}
+
+.saveButton:hover {
+  background-color: rgb(54, 122, 185);
+  cursor: pointer;
+}
+
+.overflowContainer {
+  overflow: hidden;
+}
+
+.passwordContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.passwordAnimation {
+  animation: fadeInPassword 0.5s ease;
+}
+
+.passwordForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transitions: all 0.5s ease;
+}
+
+.passCheckBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.passCheck {
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  color: gray;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.valid {
+  color: green;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+@keyframes fadeInPassword {
+  0% {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInNickname {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}

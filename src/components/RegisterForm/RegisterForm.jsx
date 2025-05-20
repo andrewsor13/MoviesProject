@@ -44,7 +44,6 @@ export default function LoginPage() {
   const handleRegister = async () => {
     try {
       const user = await register(email, password);
-      console.log('User ID (UID):', user.uid);
       navigate(`/MoviesProject`);
       setEmail('');
       setPassword('');

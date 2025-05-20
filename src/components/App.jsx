@@ -16,6 +16,10 @@ const LazyLoginPage = lazy(() => import('../pages/LoginPage'));
 
 const LazyRegisterPage = lazy(() => import('../pages/RegisterPage'));
 
+const LazyProfilePage = lazy(() => import('../pages/ProfilePage'));
+
+const LazyFavoritePage = lazy(() => import('../pages/FavoritesPage'));
+
 export const App = () => {
   return (
     <StoreProvider>
@@ -25,8 +29,14 @@ export const App = () => {
           <Suspense fallback={<LoadingPage />}>
             <Routes>
               <Route element={<PrivateRoutes />}>
-                <Route path="/MoviesProject/profile/:uid"></Route>
-                <Route path="/MoviesProject/:uid/favorites"></Route>
+                <Route
+                  path="/MoviesProject/profile/:uid"
+                  element={<LazyProfilePage />}
+                ></Route>
+                <Route
+                  path="/MoviesProject/:name/favorites"
+                  element={<LazyFavoritePage />}
+                ></Route>
               </Route>
               <Route
                 path="/MoviesProject"

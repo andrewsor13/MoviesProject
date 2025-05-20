@@ -27,7 +27,6 @@ const useHandleSearch = () => {
       try {
         const response = await axios.get(url, options);
         setData(response.data);
-        console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         throw new Error('There was an error fetching the data.');
