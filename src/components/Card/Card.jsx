@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSearchData } from 'Store/SearchData';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { useAuth } from 'Store/AuthContext';
+import { CiImageOff } from 'react-icons/ci';
 import Notiflix from 'notiflix';
 
 Notiflix.Notify.init({
@@ -84,16 +85,24 @@ export default function Card({
             <MdFavoriteBorder size={20} color="black" />
           )}
         </div>
-
-        <img
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-          alt={title}
-          className={styles.image}
-          onClick={handleClick}
-        />
+        {poster_path ? (
+          <img
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            alt={title}
+            className={styles.image}
+            onClick={handleClick}
+          />
+        ) : (
+          <div className={styles.imageSvg}>
+            <CiImageOff size={140} />
+          </div>
+        )}
       </div>
       <div className={styles.description}>
-        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.titleContainer}>
+          <h2 className={styles.title}>{title}</h2>
+        </div>
+
         <div className={styles.rating}>
           <div className={styles.ratingContainer}>
             <FaStar color="orange" />

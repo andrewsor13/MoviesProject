@@ -9,6 +9,7 @@
   box-sizing: content-box;
   transition: all 0.5s ease;
   justify-content: space-between;
+  width: 100%;
 }
 
 .coverContainer:hover {
@@ -20,6 +21,7 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   position: relative;
+  height: 230px;
 }
 
 .favoriteIcon {
@@ -36,9 +38,18 @@
 
 .image {
   width: 100%;
+  height: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   transition: transform 0.5s ease;
+}
+
+.imageSvg {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .image:hover {
@@ -53,12 +64,20 @@
   padding: 5px;
   height: 25%;
   justify-content: space-around;
+  height: 100px;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: center;
 }
 
 .title {
   font-size: 14px;
   text-align: center;
   color: #000000;
+  width: 90%;
+  text-align: center;
 }
 
 .rating {
@@ -110,5 +129,15 @@
   }
   .description {
     height: 30%;
+  }
+
+  .imageContainer {
+    height: 270px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .imageContainer {
+    height: 400px;
   }
 }
