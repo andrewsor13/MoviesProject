@@ -3,6 +3,14 @@ import styles from './RegisterForm.module.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaCheckCircle } from 'react-icons/fa';
 import { useAuth } from 'Store/AuthContext';
+import Notiflix from 'notiflix';
+
+Notiflix.Notify.init({
+  timeout: 3000,
+  position: 'right-top',
+  clickToClose: true,
+  pauseOnHover: false,
+});
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -49,6 +57,7 @@ export default function LoginPage() {
       setPassword('');
     } catch (err) {
       console.error(err.message);
+      Notiflix.Notify.failure('Email allready in use.');
     }
   };
   return (
