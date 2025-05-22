@@ -2,9 +2,6 @@ import React, { useContext, createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../Store/AuthContext';
 
-const API_TOKEN =
-  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTRhOTFjNTY4YjYyNWRjMTBiYjMyMTZiMmU4OTNjZSIsInN1YiI6IjY1YjM3OTVkYTA2NjQ1MDE3YzhkODdhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.k-J_vpdCaIcpcHQqeu_ltZbhKGRyu_a4IsRKGb1g_wY';
-
 const FavoritesContext = createContext();
 
 export const FavoriteMoviesProvider = ({ children }) => {
@@ -29,7 +26,7 @@ export const FavoriteMoviesProvider = ({ children }) => {
             {
               headers: {
                 accept: 'application/json',
-                Authorization: API_TOKEN,
+                Authorization: process.env.REACT_APP_TMDB_API_TOKEN,
               },
             }
           )

@@ -3,7 +3,7 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCLDSv_bu9K3y1Ak3XoHArwkA98Raov3os',
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: 'moviedb-6dfc6.firebaseapp.com',
   projectId: 'moviedb-6dfc6',
   storageBucket: 'moviedb-6dfc6.firebasestorage.app',
